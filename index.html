@@ -195,7 +195,7 @@ STAFF.forEach(g=>{const w=document.createElement("div");w.className="group rev";
 const vid=document.getElementById("vid");let fr,ok=false,failed=false;
 const cmd=f=>{try{fr.contentWindow.postMessage('{"event":"command","func":"'+f+'","args":""}',"*")}catch(e){}};
 addEventListener("message",e=>{if(fr&&e.source===fr.contentWindow){ok=true;fr.style.opacity=1}});
-function loadVid(){fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/1uqxpP_tnQ0?autoplay=1&mute=1&start=18&playsinline=1&rel=0&enablejsapi=1";fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;fr.title="Ateş Gaming öne çıkan video";fr.style.opacity=0;
+function loadVid(){fr=document.createElement("iframe");fr.src="https://www.youtube-nocookie.com/embed/c3hJBcSkoo4&t=4s?autoplay=1&mute=1&start=18&playsinline=1&rel=0&enablejsapi=1";fr.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";fr.allowFullscreen=true;fr.title="Ateş Gaming öne çıkan video";fr.style.opacity=0;
  fr.onload=()=>{let n=0;const t=setInterval(()=>{if(ok||++n>14){clearInterval(t);return}try{fr.contentWindow.postMessage('{"event":"listening","id":1,"channel":"widget"}',"*")}catch(e){}},400)};
  vid.appendChild(fr);setTimeout(()=>{if(!ok&&fr){fr.remove();fr=null;failed=true}},8000)}
 new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){if(!fr&&!failed)loadVid();else if(ok)cmd("playVideo")}else if(ok)cmd("pauseVideo")}),{threshold:.4}).observe(vid);
